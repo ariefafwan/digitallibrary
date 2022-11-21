@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Pemimpin\PemimpinController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,13 +28,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     
      //Middleware Admin
      Route::middleware(['admin'])->group(function () {
-        Route::resource('/admin', AdminController::class);
+        Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     });
     
-    
+    //Middleware Pemimpin
+    Route::middleware(['pemimpin'])->group(function () {
+        Route::get('/pemimpin', [PemimpinController::class, 'index'])->name('pemimpin');
+    });
+
     //Middleware User
     Route::middleware(['user'])->group(function () {
-        Route::resource('/user', UserController::class);
+        Route::get('/user', [UserController::class, 'index'])->name('user');
     });
 
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');

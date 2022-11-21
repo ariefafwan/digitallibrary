@@ -25,7 +25,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item {{ ($page === "Dashboard User") ? 'active' : ''}}">
-        <a class="nav-link" href="{{ route('user.index') }}">
+        <a class="nav-link" href="{{ route('user') }}">
             <i class="fas fa-fw fa-columns"></i>
             <span>Dashboard</span></a>
     </li>
