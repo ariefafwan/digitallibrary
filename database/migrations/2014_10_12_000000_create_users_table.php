@@ -19,6 +19,12 @@ class CreateUsersTable extends Migration
             $table->bigInteger('role_id')->default('2')->unsigned();
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
             $table->string('email')->unique();
+            $table->string('profile_img')->nullable();
+            $table->string('nippos')->nullable();
+            $table->string('kantor')->nullable();
+            $table->string('jabatan')->nullable();
+            $table->string('nmrhp')->nullable();
+            $table->string('status_kawin')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

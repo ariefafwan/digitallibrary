@@ -18,7 +18,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item {{ ($page === "Dashboard Admin") ? 'active' : ''}}">
-        <a class="nav-link" href="{{ route('admin') }}">
+        <a class="nav-link" href="{{ route('pemimpin') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
