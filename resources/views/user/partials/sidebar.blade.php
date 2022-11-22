@@ -4,9 +4,9 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route ('home') }}">
         <div class="sidebar-brand-icon">
-            {{-- <img src="/img/kominfo2.png" style="width: 60%;margin-left:5px"/> --}}
+            <img src="/img/logo.png" style="width: 60%;margin-left:5px"/>
         </div>
-        <div class="sidebar-brand-text mx-3" style="color:#28166F;font-size:12pt">SIMPEG</div>
+        <div class="sidebar-brand-text mx-3" style="color:#ff9a01;font-size:12pt">POS</div>
     </a>
 
     <!-- Divider -->
@@ -40,6 +40,7 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
+        {{-- @if ($nippos) --}}
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-laptop"></i>
@@ -47,14 +48,18 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Daftar Permohonan</h6>
-                <a class="collapse-item" href="#">Permohonan Terkirim</a>
-                <a class="collapse-item" href="#">Permohonan Diterima</a>
-                <a class="collapse-item" href="#">Permohonan Ditolak</a>
-                <a class="collapse-item" href="#">Permohonan Diproses</a>
-                <a class="collapse-item" href="#">Permohonan Selesai</a>
+                <h6 class="collapse-header">Pemohonan Cuti</h6>
+                <a class="collapse-item" href="#">Permohonan Cuti Terkirim</a>
+                <a class="collapse-item" href="#">Permohonan Cuti Diterima</a>
             </div>
         </div>
+        {{-- @else --}}
+        {{-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+            aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-laptop"></i>
+            <span>Anda Belum Isi Biodata</span>
+        </a> --}}
+        {{-- @endif --}}
     </li>
 
     <!-- Divider -->
@@ -67,14 +72,14 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="#">
             <i class="fas fa-fw fa-address-book"></i>
             <span>Bantuan</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="#">
             <i class="fas fa-fw fa-globe"></i>
             <span>FAQ</span></a>
     </li>

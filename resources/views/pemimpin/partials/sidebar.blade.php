@@ -4,9 +4,9 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
         <div class="sidebar-brand-icon">
-            {{-- <img src="/img/kominfo2.png" style="width: 60%;margin-left:5px"/> --}}
+            <img src="/img/logo.png" style="width: 60%;margin-left:5px"/>
         </div>
-        <div class="sidebar-brand-text" style="color:#28166F;font-size:12pt">SIMPEG</div>
+        <div class="sidebar-brand-text mx-3" style="color:#ff9a01;font-size:12pt">POS</div>
     </a>
 
     <!-- Divider -->
