@@ -14,8 +14,4 @@ class Izin extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function stat()
-    {
-        return $this->belongsTo(Stat::class);
-    }
 }

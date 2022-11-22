@@ -21,8 +21,7 @@ class CreateIzinsTable extends Migration
             $table->string('jenis');
             $table->date('tglawal');
             $table->date('tglakhir');
-            $table->bigInteger('stat_id')->unsigned();
-            $table->foreign('stat_id')->references('id')->on('stats')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('status');
             $table->timestamps();
         });
     }
