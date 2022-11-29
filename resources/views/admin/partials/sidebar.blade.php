@@ -30,7 +30,7 @@
             <span>Permohonan</span>
         </a>
     </li> --}}
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-file-alt"></i>
@@ -46,13 +46,20 @@
                 <a class="collapse-item" href="#">Selesai</a>
             </div>
         </div>
-    </li>
+    </li> --}}
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item  {{ ($page == "Daftar User") ? 'active' : '' }}">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('daftarpegawai.index') }}">
             <i class="fas fa-users"></i>
-            <span>User</span>
+            <span>Daftar User</span>
+        </a>
+    </li>
+
+    <li class="nav-item  {{ ($page == "Daftar Pemimpin") ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('daftarpemimpin.index') }}">
+            <i class="fa fa-address-card" aria-hidden="true"></i>
+            <span>Daftar Pemimpin</span>
         </a>
     </li>
     

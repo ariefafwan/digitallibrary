@@ -31,12 +31,12 @@
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    {{-- <li class="nav-item {{ ($page === "Tambah Permohonan")  ? 'active' : '' }}">
-        <a class="nav-link collapsed" href="#">
+    <li class="nav-item {{ ($page === "Tambah Permohonan")  ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="{{ route('izin.create') }}">
             <i class="fas fa-file-alt fa-cog"></i>
             <span>Tambah Permohonan</span>
         </a>
-    </li> --}}
+    </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
@@ -49,8 +49,9 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Pemohonan Cuti</h6>
-                <a class="collapse-item" href="#">Permohonan Cuti Terkirim</a>
-                <a class="collapse-item" href="#">Permohonan Cuti Diterima</a>
+                <a class="collapse-item" href="{{ route('izin.index') }}">Permohonan Cuti Dikirim</a>
+                <a class="collapse-item" href="{{ route('diterima') }}">Permohonan Cuti Diterima</a>
+                <a class="collapse-item" href="{{ route('ditolak') }}">Permohonan Cuti Ditolak</a>
             </div>
         </div>
         {{-- @else --}}
