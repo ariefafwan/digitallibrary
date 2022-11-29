@@ -19,9 +19,12 @@ class CreateIzinsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nmrizin');
             $table->string('jenis');
+            $table->string('deskripsi');
+            $table->string('lampiran');
             $table->date('tglawal');
             $table->date('tglakhir');
             $table->string('status');
+            $table->string('balasan')->nullable();
             $table->timestamps();
         });
     }

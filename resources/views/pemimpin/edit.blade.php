@@ -1,12 +1,13 @@
-@extends('user.app')
+@extends('pemimpin.app')
 
-@section('userbody')
+@section('pemimpinbody')
+
 
 <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <div class="container rounded bg-white mt-3 mb-1">
-            <form action="{{ route('edituser.update', $user->id) }}" method="POST" enctype="multipart/form-data" role="form">
+            <form action="{{ route('editpemimpin.update', $user->id) }}" method="POST" enctype="multipart/form-data" role="form">
                 @csrf
                 @method('PUT')
             <div class="row">
@@ -26,7 +27,7 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-12"><label class="labels">NIPPOS</label><input type="text" name="nippos" id="nippos" class="form-control" value="{{ $user->nippos }}" required></div>
-                            <div class="col-md-12"><label class="labels">Kantor</label><input type="text" name="kantor" id="kantor" class="form-control" placeholder="Isi Kantor Anda" value="{{ $user->kantor }}" required></div>
+                            <div class="col-md-12"><label class="labels">Kantor</label><input type="text" name="kantor" id="kantor" class="form-control" placeholder="Isi Kantor Anda" value="{{ $user->kantor }}" required></div>\
                             <div class="col-md-12"><label class="labels">Nomor Handphone</label><input type="number" name="nmrhp" id="nmrhp" class="form-control" placeholder="enter phone number" value="{{ $user->nmrhp }}" required></div>
                             <div class="col-md-12"><label class="labels">Jabatan</label><input type="text" name="jabatan" id="jabatan" class="form-control" value="{{ $user->jabatan }}" required readonly></div>
                         </div>

@@ -30,27 +30,26 @@
             <span>Permohonan</span>
         </a>
     </li> --}}
+
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-file-alt"></i>
-            <span>Permohonan</span>
+            <i class="fas fa-laptop"></i>
+            <span>Daftar Permohonan</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Daftar Permohonan</h6>
-                <a class="collapse-item" href="#">Masuk</a>
-                <a class="collapse-item" href="#">Diterima</a>
-                <a class="collapse-item" href="#">Diproses</a>
-                <a class="collapse-item" href="#">Ditolak</a>
-                <a class="collapse-item" href="#">Selesai</a>
+                <h6 class="collapse-header">Pemohonan Cuti</h6>
+                <a class="collapse-item" href="{{ route('izinpemimpin.index') }}">Daftar Permohonan Cuti</a>
+                <a class="collapse-item" href="{{ route('izinditerima') }}">Permohonan Cuti Diterima</a>
+                <a class="collapse-item" href="{{ route('izinditolak') }}">Permohonan Cuti Ditolak</a>
             </div>
         </div>
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item  {{ ($page == "Daftar User") ? 'active' : '' }}">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('users') }}">
             <i class="fas fa-users"></i>
             <span>User</span>
         </a>
