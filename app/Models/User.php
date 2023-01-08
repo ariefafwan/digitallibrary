@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Izin::class);
     }
+
+    public function divisi()
+    {
+        return $this->belongsTo(Divisi::class);
+    }
 }

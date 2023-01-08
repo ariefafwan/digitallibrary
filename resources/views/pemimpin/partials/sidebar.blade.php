@@ -49,7 +49,7 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item  {{ ($page == "Daftar User") ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('users') }}">
+        <a class="nav-link" href="{{ route('editdivisi.index') }}">
             <i class="fas fa-users"></i>
             <span>User</span>
         </a>

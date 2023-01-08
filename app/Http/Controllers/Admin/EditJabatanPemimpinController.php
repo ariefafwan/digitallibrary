@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Divisi;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -18,9 +20,11 @@ class EditJabatanPemimpinController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $divisi = Divisi::all();
         $page = "Daftar Pemimpin";
-        $pegawai = User::all()-> where('jabatan', 'Pemimpin');
-        return view('admin.editjabatan.daftarpemimpin', compact('user', 'pegawai', 'page'));
+        $jabatan = Role::all();
+        $pegawai = User::all()-> where('role_id', '2');
+        return view('admin.editjabatan.daftarpemimpin', compact('user', 'pegawai', 'page', 'jabatan', 'divisi'));
     }
 
     /**
@@ -76,7 +80,7 @@ class EditJabatanPemimpinController extends Controller
     public function update(Request $request, $id)
     {
         $dtUpload = User::find($id);
-        $dtUpload->jabatan = $request->jabatan;
+        $dtUpload->role_id = $request->role_id;
 
         $dtUpload->save();
 
