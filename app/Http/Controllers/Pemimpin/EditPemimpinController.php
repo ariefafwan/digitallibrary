@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Pemimpin;
 
+use App\Models\Divisi;
 use App\Models\User;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -63,8 +64,9 @@ class EditPemimpinController extends Controller
     public function edit($id)
     {
         $user = Auth::user($id);
+        $divisi = Divisi::all();
         $page = "Edit Profile User";
-        return view('pemimpin.edit', compact('user', 'page'));
+        return view('pemimpin.edit', compact('user', 'page', 'divisi'));
     }
 
     /**
@@ -88,7 +90,7 @@ class EditPemimpinController extends Controller
         $dtUpload->nmrhp = $request->nmrhp;
         $dtUpload->alamat = $request->alamat;
         $dtUpload->kantor = $request->kantor;
-        $dtUpload->jabatan = $request->jabatan;
+        $dtUpload->divisi_id = $request->divisi_id;
         $dtUpload->status_kawin = $request->status_kawin;
 
         $nm->move(public_path() . '/img/profil', $namaFile);

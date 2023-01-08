@@ -22,7 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('profile_img')->default('profil_img.jpg');
             $table->string('nippos')->nullable();
             $table->string('kantor')->nullable();
-            $table->string('jabatan')->default('Pegawai');
+            $table->bigInteger('divisi_id')->default('1')->unsigned();
+            $table->foreign('divisi_id')->references('id')->on('divisis')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nmrhp')->nullable();
             $table->string('alamat')->nullable();
             $table->string('status_kawin')->nullable();

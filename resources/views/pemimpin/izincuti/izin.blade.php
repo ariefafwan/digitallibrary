@@ -15,7 +15,7 @@
                                 <th class="text-center">No. Izin</th>
                                 <th class="text-center">Username</th>
                                 <th class="text-center">Kantor</th>
-                                <th class="text-center">Jabatan</th>
+                                <th class="text-center">NIPPOS</th>
                                 <th class="text-center">Jenis Izin</th>
                                 <th class="text-center">Tanggal Mulai Izin</th>
                                 <th class="text-center">Tanggal Berakhir Izin</th>
@@ -32,7 +32,7 @@
                                 <td>{{ $row->nmrizin }}</td>
                                 <td>{{ $row->user->name }}</td>
                                 <td>{{ $row->user->kantor }}</td>
-                                <td>{{ $row->user->jabatan }}</td>
+                                <td>{{ $row->user->nippos }}</td>
                                 <td>{{ $row->jenis }}</td>
                                 <td>{{ $row->tglawal }}</td>
                                 <td>{{ $row->tglakhir }}</td>

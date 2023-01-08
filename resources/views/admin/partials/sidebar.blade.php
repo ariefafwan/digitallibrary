@@ -62,6 +62,13 @@
             <span>Daftar Pemimpin</span>
         </a>
     </li>
+
+    <li class="nav-item  {{ ($page == "Daftar Divisi") ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('divisi.index') }}">
+            <i class="fa fa-briefcase" aria-hidden="true"></i>
+            <span>Daftar Divisi</span>
+        </a>
+    </li>
     
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

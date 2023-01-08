@@ -13,13 +13,9 @@
                             <tr>
                                 <th class="text-center">#</th>
                                 <th class="text-center">Username</th>
-                                <th class="text-center">Email</th>
                                 <th class="text-center">NIPPOS</th>
-                                <th class="text-center">Kantor</th>
                                 <th class="text-center">Jabatan</th>
                                 <th class="text-center">Nomor Handphone</th>
-                                <th class="text-center">Alamat</th>
-                                <th class="text-center">Status Kawin</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -28,18 +24,16 @@
                             <tr>
                                 <th scope="row">{{ $index + 1 }}</th>
                                 <td>{{ $row->name }}</td>
-                                <td>{{ $row->email }}</td>
                                 <td>{{ $row->nippos }}</td>
-                                <td>{{ $row->kantor }}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <form id="jabatan-update-form-{{$row->id}}" action="{{ route('daftarpegawai.update',$row->id) }}" method="POST">
+                                        <form id="jabatan-update-form-{{$row->id}}" action="{{ route('daftarpemimpin.update',$row->id) }}" method="POST">
                                             @csrf
                                             @method('PUT')                                            
-                                            <select class="form-select" name="jabatan" id="jabatan" aria-label="Floating label select example" required>
-                                                <option selected>-- Pilih --</option>
-                                                <option value="Pemimpin">Pemimpin</option>
-                                                <option value="Pegawai">Pegawai</option>
+                                            <select class="form-select" name="role_id" id="role_id" aria-label="Floating label select example" required>
+                                                <option selected>{{$row->role->name}}</option>
+                                                <option value="2">Pemimpin</option>
+                                                <option value="3">Pegawai</option>
                                             </select>
                                         </form>
                                         <a href="javascript:void(0)" class="btn btn-success ml-3"
@@ -50,8 +44,6 @@
                                     </div>
                                 </td>
                                 <td>{{ $row->nmrhp }}</td>
-                                <td>{{ $row->alamat }}</td>
-                                <td>{{ $row->status_kawin }}</td>
                                 <td align="center">
                                     <div class="btn-group">
                                         <a href="javascript:void(0)" class="btn btn-danger"

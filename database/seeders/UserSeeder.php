@@ -19,7 +19,6 @@ class UserSeeder extends Seeder
             'name' => 'admin',
             'role_id' => '1',
             'nippos' => '180180023',
-            'jabatan' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('password')
         ]);
@@ -28,7 +27,6 @@ class UserSeeder extends Seeder
             'name' => 'pemimpin',
             'role_id' => '2',
             'nippos' => '180180013',
-            'jabatan' => 'Pemimpin',
             'email' => 'pemimpin@gmail.com',
             'password' => Hash::make('password')
         ]);
