@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Pemimpin;
 
+use App\Models\Divisi;
 use App\Models\Izin;
 use App\Models\User;
 use Illuminate\Routing\Controller;
@@ -38,11 +39,4 @@ class PemimpinController extends Controller
         return view('pemimpin.izincuti.ditolak', compact('user', 'izin', 'page'));
     }
     
-    public function users()
-    {
-        $user = Auth::user();
-        $page = "Data Pegawai";
-        $pegawai = User::all()->where('jabatan', 'Pegawai');
-        return view('pemimpin.datapegawai.datauser', compact('user', 'pegawai', 'page'));
-    }
 }
