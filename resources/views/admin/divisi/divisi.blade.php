@@ -32,10 +32,10 @@
                                         <hr>
                                         <a href="javascript:void(0)" class="btn btn-danger btn-flat"
                                             onclick="event.preventDefault();
-                                                document.getElementById('news-delete-form-{{$row->id}}').submit();">
+                                                document.getElementById('divisi-delete-form-{{$row->id}}').submit();">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </a>
-                                        <form id="news-delete-form-{{$row->id}}" action="{{ route('divisi.destroy',$row->id) }}" method="POST" style="display: none;">
+                                        <form id="divisi-delete-form-{{$row->id}}" action="{{ route('divisi.destroy',$row->id) }}" method="POST" style="display: none;">
                                             @csrf 
                                             @method('DELETE')
                                         </form>

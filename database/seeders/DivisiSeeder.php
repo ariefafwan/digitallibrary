@@ -14,6 +14,7 @@ class DivisiSeeder extends Seeder
      */
     public function run()
     {
+
         Divisi::Create([
             'name' => 'Staff',
         ]);
