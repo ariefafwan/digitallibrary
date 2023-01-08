@@ -90,7 +90,6 @@ class EditPemimpinController extends Controller
         $dtUpload->nmrhp = $request->nmrhp;
         $dtUpload->alamat = $request->alamat;
         $dtUpload->kantor = $request->kantor;
-        $dtUpload->divisi_id = $request->divisi_id;
         $dtUpload->status_kawin = $request->status_kawin;
 
         $nm->move(public_path() . '/img/profil', $namaFile);

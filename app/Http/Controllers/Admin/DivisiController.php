@@ -21,7 +21,7 @@ class DivisiController extends Controller
     {
         $user = Auth::user();
         $page = "Daftar Divisi";
-        $divisi = Divisi::all();
+        $divisi = Divisi::all()->except('id' ,'1');
         return view('admin.divisi.divisi', compact('user', 'page', 'divisi'));
     }
 
@@ -76,7 +76,10 @@ class DivisiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+        $page = "Edit Divisi";
+        $divisi = Divisi::findOrFail($id);
+        return view('admin.divisi.edit', compact('user', 'page', 'divisi'));
     }
 
     /**
@@ -104,6 +107,10 @@ class DivisiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $divisi = Divisi::findOrFail($id);
+        $divisi->delete();
+
+        return redirect()->route('divisi.index')
+            ->with('updatesuccess', 'Berhasil Dihapus');
     }
 }
