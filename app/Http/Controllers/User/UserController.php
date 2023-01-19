@@ -30,7 +30,12 @@ class UserController extends Controller
         $user = Auth::user();
         $page = "Permohonan Izin Diterima";
         $izin = Izin::all()->where('user_id',Auth::user()->id)-> where('status', 'Diterima');
-        return view('user.izincuti.diterima', compact('user', 'izin', 'page'));
+        $nippos = Auth::user()->nippos;
+        if ($nippos == true) {
+            return view('user.izincuti.diterima', compact('user', 'izin', 'page', 'nippos'));
+        }
+        return view('user.izincuti.belum', compact('user', 'izin', 'page', 'nippos'));
+        
     }
 
     public function izinditolak()
@@ -38,6 +43,11 @@ class UserController extends Controller
         $user = Auth::user();
         $page = "Permohonan Izin Ditolak";
         $izin = Izin::all()-> where('status', 'Ditolak');
-        return view('user.izincuti.ditolak', compact('user', 'izin', 'page'));
+        $nippos = Auth::user()->nippos;
+        if ($nippos == true) {
+            return view('user.izincuti.ditolak', compact('user', 'izin', 'page', 'nippos'));
+        }
+        return view('user.izincuti.belum', compact('user', 'izin', 'page', 'nippos'));
+        
     }
 }

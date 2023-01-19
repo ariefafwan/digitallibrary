@@ -53,6 +53,7 @@ class EditUserController extends Controller
         $user = Auth::user();
         $page = "Profile User";
         return view('user.user', compact('user', 'page'));
+        
     }
 
     /**

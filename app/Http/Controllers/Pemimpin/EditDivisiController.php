@@ -22,6 +22,10 @@ class EditDivisiController extends Controller
         $page = "Data Pegawai";
         $pegawai = User::all()->where('role_id', '3');
         $divisi = Divisi::all();
+        if ($pegawai->isEmpty()) {
+            return view('pemimpin.datapegawai.belum', compact('user', 'pegawai', 'page', 'divisi'));
+        }
+
         return view('pemimpin.datapegawai.datauser', compact('user', 'pegawai', 'page', 'divisi'));
     }
 

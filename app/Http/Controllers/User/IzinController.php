@@ -21,7 +21,12 @@ class IzinController extends Controller
         $user = Auth::user();
         $izin = Izin::all()->where('user_id',Auth::user()->id)-> where('status', 'Dikirim');
         $page = "Permohonan Izin Dikirim";
-        return view('user.izincuti.dikirim', compact('user', 'izin', 'page'));
+        $nippos = Auth::user()->nippos;
+        if ($nippos == true) {
+            return view('user.izincuti.dikirim', compact('user', 'izin', 'page', 'nippos'));
+        }
+        return view('user.izincuti.belum', compact('user', 'izin', 'page', 'nippos'));
+        
     }
 
     /**
@@ -33,7 +38,12 @@ class IzinController extends Controller
     {
         $user = Auth::user();
         $page = "Tambah Permohonan Izin Cuti";
-        return view('user.izincuti.create', compact('user', 'page'));
+        $nippos = Auth::user()->nippos;
+        if ($nippos == true) {
+            return view('user.izincuti.create', compact('user', 'page', 'nippos'));
+        }
+        return view('user.izincuti.belum', compact('user', 'page', 'nippos'));
+        
     }
 
     /**
