@@ -25,7 +25,7 @@
                             <div class="col-md-12"><label class="labels">Nama</label><input type="text" class="form-control" id="name" name="name" placeholder="name" value="{{ $user->name }}" required></div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">NIPPOS</label><input type="text" name="nippos" id="nippos" class="form-control" value="{{ $user->nippos }}" required></div>
+                            <div class="col-md-12"><label class="labels">NIPPOS</label><input type="number" name="nippos" id="nippos" class="form-control" value="{{ $user->nippos }}" required></div>
                             <div class="col-md-12"><label class="labels">Kantor</label><input type="text" name="kantor" id="kantor" class="form-control" placeholder="Isi Kantor Anda" value="{{ $user->kantor }}" required></div>
                             <div class="col-md-12"><label class="labels">Nomor Handphone</label><input type="number" name="nmrhp" id="nmrhp" class="form-control" placeholder="enter phone number" value="{{ $user->nmrhp }}" required></div>
                             <div class="col-md-12"><label class="labels">Jabatan</label><input type="text" name="role_id" id="role_id" class="form-control" placeholder="enter jabatan" value="{{ $user->role->name }}" readonly></div>
