@@ -1,2 +1,3 @@
 # simpeg
- Sistem Informasi Pegawai
+# Framework Laravel 8
+ Sistem Informasi Perizinan Pegawai
