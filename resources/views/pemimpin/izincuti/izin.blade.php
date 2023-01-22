@@ -28,7 +28,7 @@
                         <tbody>
                             @foreach($izin as $index => $row)
                             <tr>
-                                <th scope="row">{{ $index + 1 }}</th>
+                                <th>{{ $loop->iteration }}</th>
                                 <td>{{ $row->nmrizin }}</td>
                                 <td>{{ $row->user->name }}</td>
                                 <td>{{ $row->user->kantor }}</td>

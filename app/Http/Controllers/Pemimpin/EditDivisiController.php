@@ -58,7 +58,9 @@ class EditDivisiController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $page = 'Detail Users';
+        return view('pemimpin.datapegawai.show', compact('user', 'page'));
     }
 
     /**

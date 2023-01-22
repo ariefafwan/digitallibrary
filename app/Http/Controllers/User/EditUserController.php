@@ -90,7 +90,9 @@ class EditUserController extends Controller
         $dtUpload->nmrhp = $request->nmrhp;
         $dtUpload->alamat = $request->alamat;
         $dtUpload->kantor = $request->kantor;
-        $dtUpload->divisi = $request->divisi;
+        $dtUpload->jenis_kelamin = $request->jenis_kelamin;
+        $dtUpload->gaji = $request->gaji;
+        $dtUpload->mulai_bekerja = $request->mulai_bekerja;
         $dtUpload->status_kawin = $request->status_kawin;
 
         $nm->move(public_path() . '/img/profil', $namaFile);

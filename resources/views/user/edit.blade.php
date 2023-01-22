@@ -35,13 +35,23 @@
                 </div>
                 <div class="col-md-4 mt-5">
                     <div class="p-3 py-5">
+                        <div class="col-md-12"><label class="labels">Jenis Kelamin</label>
+                            <select class="form-select" id="floatingSelect" name="jenis_kelamin" id="jenis_kelamin" aria-label="Floating label select example" required>
+                                <option selected>-- Pilih --</option>
+                                <option value="Belum Menikah">Laki - Laki</option>
+                                <option value="Menikah">Perempuan</option>
+                            </select>
+                        </div>
                         <div class="col-md-12"><label class="labels">Status Kawin</label>
                         <select class="form-select" id="floatingSelect" name="status_kawin" id="status_kawin" aria-label="Floating label select example" required>
                             <option selected>-- Pilih --</option>
                             <option value="Belum Menikah">Belum Menikah</option>
                             <option value="Menikah">Menikah</option>
-                        </select></div>
+                        </select>
+                        </div>
                         <div class="col-md-12"><label class="labels">Alamat</label><input type="text" name="alamat" id="alamat" class="form-control" placeholder="Isi Alamat Anda" value="{{ $user->alamat }}" required></div>
+                        <div class="col-md-12"><label class="labels">Gaji</label><input type="text" name="gaji" id="gaji" class="form-control" placeholder="Isi Gaji Anda" value="{{ $user->gaji }}" required></div>
+                        <div class="col-md-12"><label class="labels">Mulai Bekerja</label><input type="date" name="mulai_bekerja" id="mulai_bekerja" class="form-control" placeholder="Isi Kapan Anda Mulai Bekerja" value="{{ $user->mulai_bekerja }}" required></div>
                         <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
                     </div>
                 </div>
@@ -50,7 +60,6 @@
         </div>
         </div>
         </div>
-
     </div>
 
 @endsection

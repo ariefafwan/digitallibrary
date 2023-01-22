@@ -23,7 +23,7 @@
                         <tbody>
                             @foreach($pegawai as $index => $row)
                             <tr>
-                                <th scope="row">{{ $index + 1 }}</th>
+                                <th>{{ $loop->iteration }}</th>
                                 <td>{{ $row->name }}</td>
                                 <td>{{ $row->nippos }}</td>
                                 <td>
@@ -48,6 +48,8 @@
                                 <td>{{ $row->nmrhp }}</td>
                                 <td align="center">
                                     <div class="btn-group">
+                                        <a href="{{ route('daftarpegawai.show',$row->id) }}" class="btn btn-warning btn-flat mr-2"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        <hr>
                                         <a href="javascript:void(0)" class="btn btn-danger"
                                             onclick="event.preventDefault();
                                                 document.getElementById('pegawai-delete-form-{{$row->id}}').submit();">
