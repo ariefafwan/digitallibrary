@@ -29,8 +29,11 @@
                 </div>
                 <div class="col-md-4 mt-5">
                     <div class="p-3 py-5">
+                        <div class="col-md-12"><label class="labels">Jenis Kelamin</label><input type="text" name="jenis_kelamin" id="jenis_kelamin" class="form-control" placeholder="Isi Jenis Kelamin Anda" value="{{ $user->jenis_kelamin }}" readonly></div>
                         <div class="col-md-12"><label class="labels">Status Kawin</label><input type="text" name="nippos" id="nippos" class="form-control" value="{{ $user->status_kawin }}" readonly></div>
                         <div class="col-md-12"><label class="labels">Alamat</label><input type="text" name="alamat" id="alamat" class="form-control" placeholder="Isi Alamat Anda" value="{{ $user->alamat }}" readonly></div>
+                        <div class="col-md-12"><label class="labels">Gaji</label><input type="number" name="gaji" id="gaji" class="form-control" placeholder="Isi Gaji Anda" value="{{ $user->gaji }}" readonly></div>
+                        <div class="col-md-12"><label class="labels">Mulai Bekerja</label><input type="text" name="mulai_bekerja" id="mulai_bekerja" class="form-control" placeholder="Isi Kapan Anda Mulai Bekerja" value="{{ $user->mulai_bekerja }}" readonly></div>
                         <div class="btn-group mt-5 ml-3 align-items-center">
                             <a href="{{ route('edituser.edit',$user->id) }}" class="btn btn-success profile-button">Edit</a>
                         </button>

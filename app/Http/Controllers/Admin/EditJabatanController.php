@@ -56,7 +56,9 @@ class EditJabatanController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $page = 'Detail Users';
+        return view('admin.editjabatan.show', compact('user', 'page'));
     }
 
     /**

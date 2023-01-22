@@ -17,15 +17,14 @@
                                 <th class="text-center">NIPPOS</th>
                                 <th class="text-center">Kantor</th>
                                 <th class="text-center">Divisi</th>
-                                <th class="text-center">Nomor Handphone</th>
-                                <th class="text-center">Alamat</th>
-                                <th class="text-center">Status Kawin</th>
+                                <th class="text-center">Aksi</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($pegawai as $index => $row)
                             <tr>
-                                <th scope="row">{{ $index + 1 }}</th>
+                                <th>{{ $loop->iteration }}</th>
                                 <td>{{ $row->name }}</td>
                                 <td>{{ $row->email }}</td>
                                 <td>{{ $row->nippos }}</td>
@@ -49,9 +48,22 @@
                                         </a>
                                     </div>    
                                 </td>
-                                <td>{{ $row->nmrhp }}</td>
-                                <td>{{ $row->alamat }}</td>
-                                <td>{{ $row->status_kawin }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        {{-- <a href="" class="btn btn-primary btn-flat"><i class="fa fa-eye"></i></a> --}}
+                                        <a href="{{ route('editdivisi.show',$row->id) }}" class="btn btn-warning btn-flat mr-2"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        <hr>
+                                        <a href="javascript:void(0)" class="btn btn-danger btn-flat"
+                                            onclick="event.preventDefault();
+                                                document.getElementById('user-delete-form-{{$row->id}}').submit();">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                        <form id="user-delete-form-{{$row->id}}" action="{{ route('editdivisi.destroy',$row->id) }}" method="POST" style="display: none;">
+                                            @csrf 
+                                            @method('DELETE')
+                                        </form>
+                                    </div>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

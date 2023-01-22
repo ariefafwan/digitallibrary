@@ -27,6 +27,9 @@ class CreateUsersTable extends Migration
             $table->string('nmrhp')->nullable();
             $table->string('alamat')->nullable();
             $table->string('status_kawin')->nullable();
+            $table->string('jenis_kelamin')->nullable();
+            $table->date('mulai_bekerja')->nullable();
+            $table->string('gaji')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
