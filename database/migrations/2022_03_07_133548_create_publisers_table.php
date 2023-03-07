@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDivisisTable extends Migration
+class CreatePublisersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateDivisisTable extends Migration
      */
     public function up()
     {
-        Schema::create('divisis', function (Blueprint $table) {
+        Schema::create('publisers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('role_id')->default('3')->unsigned();
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateDivisisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('divisis');
+        Schema::dropIfExists('publisers');
     }
 }
