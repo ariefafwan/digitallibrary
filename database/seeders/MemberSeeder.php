@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Divisi;
 use Illuminate\Database\Seeder;
 
-class DivisiSeeder extends Seeder
+class MemberSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,9 +13,6 @@ class DivisiSeeder extends Seeder
      */
     public function run()
     {
-
-        Divisi::Create([
-            'name' => 'Staff',
-        ]);
+        //
     }
 }

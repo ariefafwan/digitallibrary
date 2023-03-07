@@ -15,8 +15,8 @@ class CreateIzinsTable extends Migration
     {
         Schema::create('izins', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('pegawai_id')->unsigned();
+            $table->foreign('pegawai_id')->references('id')->on('pegawais')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nmrizin');
             $table->string('jenis');
             $table->string('deskripsi');
