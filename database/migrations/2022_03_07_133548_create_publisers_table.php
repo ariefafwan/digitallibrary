@@ -16,6 +16,8 @@ class CreatePublisersTable extends Migration
         Schema::create('publisers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('email')->unique();
+            $table->text('alamat');
             $table->timestamps();
         });
     }

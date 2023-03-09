@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Pemimpin;
 use App\Models\Izin;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Http\Request;
 
 

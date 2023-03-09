@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Izin extends Model
 {
     use HasFactory;
+    
+    protected $guarded = [];
+    protected $with = ['user'];
 
     public function user()
     {

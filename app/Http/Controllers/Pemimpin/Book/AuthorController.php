@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Pemimpin;
+namespace App\Http\Controllers\Pemimpin\Book;
 
-use App\Models\Divisi;
-use App\Models\User;
+use App\Models\Author;
+use App\Models\Peminjaman;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
-class EditPemimpinController extends Controller
+class AuthorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,10 @@ class EditPemimpinController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $page = "Daftar Pengarang";
+        $pengarang = Author::latest()->paginate(10);
+        return view('pemimpin.book.pengarang.pengarang', compact('user', 'pengarang', 'page'));
     }
 
     /**
@@ -28,7 +31,10 @@ class EditPemimpinController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        $page = "Tambah Pengarang";
+        $pengarang = Author::latest()->paginate(10);
+        return view('pemimpin.book.pengarang.create', compact('user', 'pengarang', 'page'));
     }
 
     /**
@@ -39,7 +45,12 @@ class EditPemimpinController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dtUpload = new Author();
+        $dtUpload->name = $request->name;
+        $dtUpload->save();
+
+        Alert::success('Informasi Pesan!', 'Pengarang Baru Berhasil ditambahkan');
+        return redirect()->route('pengarang.index');
     }
 
     /**
@@ -50,9 +61,7 @@ class EditPemimpinController extends Controller
      */
     public function show($id)
     {
-        $user = Auth::user();
-        $page = "Profile User";
-        return view('pemimpin.user', compact('user', 'page'));
+        //
     }
 
     /**
@@ -63,9 +72,10 @@ class EditPemimpinController extends Controller
      */
     public function edit($id)
     {
-        $user = Auth::user($id);
-        $page = "Edit Profile User";
-        return view('pemimpin.edit', compact('user', 'page'));
+        $user = Auth::user();
+        $page = "Edit Pengarang";
+        $pengarang = Author::findOrFail($id);
+        return view('pemimpin.book.pengarang.edit', compact('user', 'pengarang', 'page'));
     }
 
     /**
@@ -77,24 +87,12 @@ class EditPemimpinController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = Auth::user($id);
-        
-        $nm = $request->profile_img;
-        $namaFile = $nm->getClientOriginalName();
-
-        $dtUpload = User::find($id);
+        $dtUpload = Author::findOrFail($id);
         $dtUpload->name = $request->name;
-        $dtUpload->profile_img = $namaFile;
-        $dtUpload->nippos = $request->nippos;
-        $dtUpload->nmrhp = $request->nmrhp;
-        $dtUpload->alamat = $request->alamat;
-        $dtUpload->kantor = $request->kantor;
-        $dtUpload->status_kawin = $request->status_kawin;
-
-        $nm->move(public_path() . '/img/profil', $namaFile);
         $dtUpload->save();
 
-        return redirect()->route('editpemimpin.show', $user->id)->with(['message' => 'News created successfully!']);
+        Alert::success('Informasi Pesan!', 'Pengarang Baru Berhasil ditambahkan');
+        return redirect()->route('pengarang.index');
     }
 
     /**
@@ -105,6 +103,11 @@ class EditPemimpinController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $author = Author::findOrFail($id);
+        $author->delete();
+        $author->book()->delete();
+        Peminjaman::truncate();
+        Alert::success('Informasi Pesan!', 'Pengarang Berhasil dihapus!');
+        return back();
     }
 }

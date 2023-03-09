@@ -60,5 +60,5 @@ php artisan serve
 - Copyright © Teuku M. Arief Afwan
 ------------
 
-- **Feel free to ask me at [Telegram](https://t.me/ihw_me/).**
+- **Feel free to ask me at [Telegram](https://t.me/ariefafwann).**
 

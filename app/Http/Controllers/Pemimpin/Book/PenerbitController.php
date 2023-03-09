@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Pemimpin;
+namespace App\Http\Controllers\Pemimpin\Book;
 
-use App\Models\Divisi;
-use App\Models\User;
+use App\Models\Peminjaman;
+use App\Models\Publiser;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
-class EditPemimpinController extends Controller
+class PenerbitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,10 @@ class EditPemimpinController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $page = "Daftar Penerbit";
+        $penerbit = Publiser::latest()->paginate(10);
+        return view('pemimpin.book.penerbit.penerbit', compact('user', 'penerbit', 'page'));
     }
 
     /**
@@ -28,7 +31,10 @@ class EditPemimpinController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        $page = "Tambah Penerbit";
+        $penerbit = Publiser::latest()->paginate(10);
+        return view('pemimpin.book.penerbit.create', compact('user', 'penerbit', 'page'));
     }
 
     /**
@@ -39,7 +45,14 @@ class EditPemimpinController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dtUpload = new Publiser();
+        $dtUpload->name = $request->name;
+        $dtUpload->email = $request->email;
+        $dtUpload->alamat = $request->alamat;
+        $dtUpload->save();
+
+        Alert::success('Informasi Pesan!', 'Penerbit Baru Berhasil ditambahkan');
+        return redirect()->route('penerbit.index');
     }
 
     /**
@@ -50,9 +63,7 @@ class EditPemimpinController extends Controller
      */
     public function show($id)
     {
-        $user = Auth::user();
-        $page = "Profile User";
-        return view('pemimpin.user', compact('user', 'page'));
+        //
     }
 
     /**
@@ -63,9 +74,7 @@ class EditPemimpinController extends Controller
      */
     public function edit($id)
     {
-        $user = Auth::user($id);
-        $page = "Edit Profile User";
-        return view('pemimpin.edit', compact('user', 'page'));
+        //
     }
 
     /**
@@ -77,24 +86,7 @@ class EditPemimpinController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = Auth::user($id);
-        
-        $nm = $request->profile_img;
-        $namaFile = $nm->getClientOriginalName();
-
-        $dtUpload = User::find($id);
-        $dtUpload->name = $request->name;
-        $dtUpload->profile_img = $namaFile;
-        $dtUpload->nippos = $request->nippos;
-        $dtUpload->nmrhp = $request->nmrhp;
-        $dtUpload->alamat = $request->alamat;
-        $dtUpload->kantor = $request->kantor;
-        $dtUpload->status_kawin = $request->status_kawin;
-
-        $nm->move(public_path() . '/img/profil', $namaFile);
-        $dtUpload->save();
-
-        return redirect()->route('editpemimpin.show', $user->id)->with(['message' => 'News created successfully!']);
+        //
     }
 
     /**
@@ -105,6 +97,11 @@ class EditPemimpinController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $publisher = Publiser::findOrFail($id);
+        $publisher->delete();
+        $publisher->book()->delete();
+        Peminjaman::truncate();
+        Alert::success('Informasi Pesan!', 'Penerbit Berhasil dihapus!');
+        return back();
     }
 }

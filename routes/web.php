@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\DivisiController;
 use App\Http\Controllers\Admin\EditJabatanController;
 use App\Http\Controllers\Admin\EditJabatanPemimpinController;
-use App\Http\Controllers\Pemimpin\EditDivisiController;
+use App\Http\Controllers\Pemimpin\Book\AuthorController;
+use App\Http\Controllers\Pemimpin\Book\KategoriController;
+use App\Http\Controllers\Pemimpin\Book\PenerbitController;
 use App\Http\Controllers\Pemimpin\EditPemimpinController;
 use App\Http\Controllers\Pemimpin\IzinPemimpinController;
 use App\Http\Controllers\Pemimpin\PemimpinController;
@@ -33,13 +34,15 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('/pengarang', AuthorController::class);
+Route::resource('/penerbit', PenerbitController::class);
+Route::resource('/kategori', KategoriController::class);
     
      //Middleware Admin
      Route::middleware(['admin'])->group(function () {
         Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin');
         Route::resource('admin/daftarpegawai', EditJabatanController::class);
         Route::resource('admin/daftarpemimpin', EditJabatanPemimpinController::class);
-        Route::resource('admin/divisi', DivisiController::class);
     });
     
     //Middleware Pemimpin
@@ -49,7 +52,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::get('pemimpin/izinterima', [PemimpinController::class, 'izinditerima'])->name('izinditerima');
         Route::resource('pemimpin/izinpemimpin', IzinPemimpinController::class);
         Route::get('pemimpin/izinditolak', [PemimpinController::class, 'izinditolak'])->name('izinditolak');
-        Route::resource('pemimpin/editdivisi', EditDivisiController::class);
     });
 
     //Middleware User

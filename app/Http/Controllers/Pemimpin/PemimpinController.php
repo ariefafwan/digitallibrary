@@ -19,7 +19,7 @@ class PemimpinController extends Controller
         $dt1 = DB::table('izins')->get()->where('status', 'Dikirim')->count();
         $dt2 = DB::table('izins')->get()->where('status', 'Diterima')->count();
         $dt3 = DB::table('izins')->get()->where('status', 'Ditolak')->count();
-        $page = "Dasboard Pemimpin";
+        $page = "Dashboard Pegawai";
         return view('pemimpin.dashboard', compact('user', 'dt1', 'dt2', 'dt3','page'));
     }
 
