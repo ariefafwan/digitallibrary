@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Pemimpin;
 
-use App\Models\Divisi;
-use App\Models\User;
+
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Http\Request;
 
-class EditDivisiController extends Controller
+class PinjamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,15 +16,7 @@ class EditDivisiController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $page = "Data Pegawai";
-        $pegawai = User::all()->where('role_id', '3');
-        $divisi = Divisi::all();
-        if ($pegawai->isEmpty()) {
-            return view('pemimpin.datapegawai.belum', compact('user', 'pegawai', 'page', 'divisi'));
-        }
-
-        return view('pemimpin.datapegawai.datauser', compact('user', 'pegawai', 'page', 'divisi'));
+        //
     }
 
     /**
@@ -58,9 +48,7 @@ class EditDivisiController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        $page = 'Detail Users';
-        return view('pemimpin.datapegawai.show', compact('user', 'page'));
+        //
     }
 
     /**
@@ -83,12 +71,7 @@ class EditDivisiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $dtUpload = User::find($id);
-        $dtUpload->divisi_id = $request->divisi_id;
-
-        $dtUpload->save();
-
-        return redirect()->route('editdivisi.index')->with(['message' => 'successfully!']);
+        //
     }
 
     /**

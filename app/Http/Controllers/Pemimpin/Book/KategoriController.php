@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Pemimpin\Book;
 
-use App\Models\Divisi;
-use App\Models\Role;
-use App\Models\User;
+use App\Models\Kategori;
+use App\Models\Peminjaman;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
-class DivisiController extends Controller
+class KategoriController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +19,9 @@ class DivisiController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $page = "Daftar Divisi";
-        $divisi = Divisi::all()->except('id' ,'1');
-        return view('admin.divisi.divisi', compact('user', 'page', 'divisi'));
+        $page = "Daftar Kategori Buku";
+        $kategori = Kategori::latest()->paginate(10);
+        return view('pemimpin.book.kategori.kategori', compact('user', 'kategori', 'page'));
     }
 
     /**
@@ -33,9 +32,9 @@ class DivisiController extends Controller
     public function create()
     {
         $user = Auth::user();
-        $page = "Tambah Divisi";
-        $divisi = Divisi::all();
-        return view('admin.divisi.create', compact('user', 'page', 'divisi'));
+        $page = "Tambah Kategori";
+        $kategori = Kategori::latest()->paginate(10);
+        return view('pemimpin.book.kategori.create', compact('user', 'kategori', 'page'));
     }
 
     /**
@@ -46,15 +45,12 @@ class DivisiController extends Controller
      */
     public function store(Request $request)
     {
-
-        $dtUpload = new Divisi();
+        $dtUpload = new Kategori();
         $dtUpload->name = $request->name;
-
         $dtUpload->save();
 
-
-        return redirect()->route('divisi.index')
-            ->with('updatesuccess', 'Divisi Berhasil Ditambahkan');
+        Alert::success('Informasi Pesan!', 'Kategori Baru Berhasil ditambahkan');
+        return redirect()->route('kategori.index');
     }
 
     /**
@@ -77,9 +73,9 @@ class DivisiController extends Controller
     public function edit($id)
     {
         $user = Auth::user();
-        $page = "Edit Divisi";
-        $divisi = Divisi::findOrFail($id);
-        return view('admin.divisi.edit', compact('user', 'page', 'divisi'));
+        $page = "Edit Kategori Buku";
+        $kategori = Kategori::findOrFail($id);
+        return view('pemimpin.book.kategori.edit', compact('user', 'kategori', 'page'));
     }
 
     /**
@@ -91,12 +87,12 @@ class DivisiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $dtUpload = Divisi::find($id);
+        $dtUpload = Kategori::findOrFail($id);
         $dtUpload->name = $request->name;
-
         $dtUpload->save();
 
-        return redirect()->route('divisi.index')->with(['message' => 'successfully!']);
+        Alert::success('Informasi Pesan!', 'Kategori Baru Berhasil ditambahkan');
+        return redirect()->route('kategori.index');
     }
 
     /**
@@ -107,10 +103,15 @@ class DivisiController extends Controller
      */
     public function destroy($id)
     {
-        $divisi = Divisi::findOrFail($id);
-        $divisi->delete();
-
-        return redirect()->route('divisi.index')
-            ->with('updatesuccess', 'Berhasil Dihapus');
+        $category = Kategori::findOrFail($id);
+        if ($category::doesntHave('book')) {
+            $category->delete();
+        } else {
+            $category->delete();
+            $category->book()->delete();
+            Peminjaman::truncate(); 
+        }
+        Alert::success('Informasi Pesan!', 'Kategori Berhasil dihapus!');
+        return back();
     }
 }

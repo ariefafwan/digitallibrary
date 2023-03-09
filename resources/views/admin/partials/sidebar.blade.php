@@ -30,43 +30,56 @@
             <span>Permohonan</span>
         </a>
     </li> --}}
-    {{-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-file-alt"></i>
-            <span>Permohonan</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Daftar Permohonan</h6>
-                <a class="collapse-item" href="#">Masuk</a>
-                <a class="collapse-item" href="#">Diterima</a>
-                <a class="collapse-item" href="#">Diproses</a>
-                <a class="collapse-item" href="#">Ditolak</a>
-                <a class="collapse-item" href="#">Selesai</a>
-            </div>
-        </div>
-    </li> --}}
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item  {{ ($page == "Daftar User") ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('daftarpegawai.index') }}">
             <i class="fas fa-users"></i>
-            <span>Daftar User</span>
+            <span>Daftar Member</span>
         </a>
     </li>
 
-    <li class="nav-item  {{ ($page == "Daftar Pemimpin") ? 'active' : '' }}">
+    <li class="nav-item  {{ ($page == "Daftar Pegawai") ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('daftarpemimpin.index') }}">
             <i class="fa fa-address-card" aria-hidden="true"></i>
-            <span>Daftar Pemimpin</span>
+            <span>Daftar Pegawai</span>
         </a>
     </li>
 
-    <li class="nav-item  {{ ($page == "Daftar Divisi") ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('divisi.index') }}">
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+            aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-laptop"></i>
+            <span>Cuti Pegawai</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Pemohonan Cuti</h6>
+                <a class="collapse-item" href="{{ route('izinpemimpin.index') }}">Daftar Permohonan Cuti</a>
+                <a class="collapse-item" href="{{ route('izinditerima') }}">Permohonan Cuti Diterima</a>
+                <a class="collapse-item" href="{{ route('izinditolak') }}">Permohonan Cuti Ditolak</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item  {{ ($page == "Peminjaman") ? 'active' : '' }}">
+        <a class="nav-link" href="">
             <i class="fa fa-briefcase" aria-hidden="true"></i>
-            <span>Daftar Divisi</span>
+            <span>Peminjaman</span>
+        </a>
+    </li>
+
+    <li class="nav-item  {{ ($page == "Denda Peminjaman") ? 'active' : '' }}">
+        <a class="nav-link" href="">
+            <i class="fa fa-briefcase" aria-hidden="true"></i>
+            <span>Denda Peminjaman</span>
+        </a>
+    </li>
+
+    <li class="nav-item  {{ ($page == "Laporan Peminjaman") ? 'active' : '' }}">
+        <a class="nav-link" href="">
+            <i class="fa fa-briefcase" aria-hidden="true"></i>
+            <span>Laporan Peminjaman</span>
         </a>
     </li>
     

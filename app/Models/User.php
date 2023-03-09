@@ -42,6 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $guarded = [];
+    protected $with = ['role'];
+
     public function role()
     {
         return $this->belongsTo(Role::class);
@@ -52,8 +55,13 @@ class User extends Authenticatable
         return $this->hasMany(Izin::class);
     }
 
-    public function divisi()
+    public function pegawai()
     {
-        return $this->belongsTo(Divisi::class);
+        return $this->hasMany(Pegawai::class);
+    }
+
+    public function member()
+    {
+        return $this->hasMany(Member::class);
     }
 }

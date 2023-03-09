@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Pemimpin;
+namespace App\Http\Controllers\Pemimpin\Book;
 
-use App\Models\Divisi;
-use App\Models\User;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
-class EditPemimpinController extends Controller
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -50,9 +48,7 @@ class EditPemimpinController extends Controller
      */
     public function show($id)
     {
-        $user = Auth::user();
-        $page = "Profile User";
-        return view('pemimpin.user', compact('user', 'page'));
+        //
     }
 
     /**
@@ -63,9 +59,7 @@ class EditPemimpinController extends Controller
      */
     public function edit($id)
     {
-        $user = Auth::user($id);
-        $page = "Edit Profile User";
-        return view('pemimpin.edit', compact('user', 'page'));
+        //
     }
 
     /**
@@ -77,24 +71,7 @@ class EditPemimpinController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = Auth::user($id);
-        
-        $nm = $request->profile_img;
-        $namaFile = $nm->getClientOriginalName();
-
-        $dtUpload = User::find($id);
-        $dtUpload->name = $request->name;
-        $dtUpload->profile_img = $namaFile;
-        $dtUpload->nippos = $request->nippos;
-        $dtUpload->nmrhp = $request->nmrhp;
-        $dtUpload->alamat = $request->alamat;
-        $dtUpload->kantor = $request->kantor;
-        $dtUpload->status_kawin = $request->status_kawin;
-
-        $nm->move(public_path() . '/img/profil', $namaFile);
-        $dtUpload->save();
-
-        return redirect()->route('editpemimpin.show', $user->id)->with(['message' => 'News created successfully!']);
+        //
     }
 
     /**

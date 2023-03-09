@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+    protected $with = ['user'];
+
+    public function peminjaman()
+    {
+        return $this->hasOne(Peminjaman::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

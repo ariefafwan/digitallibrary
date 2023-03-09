@@ -17,41 +17,45 @@
     </div>
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item {{ ($page === "Dashboard Admin") ? 'active' : ''}}">
+    <li class="nav-item {{ ($page === "Dashboard Pegawai") ? 'active' : ''}}">
         <a class="nav-link" href="{{ route('pemimpin') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
 
-    <!-- Nav Item - Pages Collapse Menu -->
-    {{-- <li class="nav-item {{ ($page === "Permohonan")  ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('permohonan.index') }}">
-            <i class="fas fa-file-alt fa-cog"></i>
-            <span>Permohonan</span>
-        </a>
-    </li> --}}
+    <li class="nav-item {{ ($page === "Daftar Member") ? 'active' : ''}}">
+        <a class="nav-link" href="">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Daftar Member</span></a>
+    </li>
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-laptop"></i>
-            <span>Daftar Permohonan</span>
+            <i class="fas fa-fw fa-file-alt"></i>
+            <span>Manajemen Buku</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Pemohonan Cuti</h6>
-                <a class="collapse-item" href="{{ route('izinpemimpin.index') }}">Daftar Permohonan Cuti</a>
-                <a class="collapse-item" href="{{ route('izinditerima') }}">Permohonan Cuti Diterima</a>
-                <a class="collapse-item" href="{{ route('izinditolak') }}">Permohonan Cuti Ditolak</a>
+                <a class="collapse-item" href="{{ route('kategori.index') }}">Kategori Buku</a>
+                <a class="collapse-item" href="#">Buku</a>
+                <a class="collapse-item" href="{{ route ('pengarang.index') }}">Pengarang</a>
+                <a class="collapse-item" href="{{ route ('penerbit.index') }}">Penerbit</a>
             </div>
         </div>
     </li>
 
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item  {{ ($page == "Daftar User") ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('editdivisi.index') }}">
-            <i class="fas fa-users"></i>
-            <span>User</span>
+    <li class="nav-item  {{ ($page == "Peminjaman") ? 'active' : '' }}">
+        <a class="nav-link" href="">
+            <i class="fa fa-briefcase" aria-hidden="true"></i>
+            <span>Peminjaman</span>
+        </a>
+    </li>
+
+    <li class="nav-item  {{ ($page == "Denda Peminjaman") ? 'active' : '' }}">
+        <a class="nav-link" href="">
+            <i class="fa fa-briefcase" aria-hidden="true"></i>
+            <span>Denda Peminjaman</span>
         </a>
     </li>
     

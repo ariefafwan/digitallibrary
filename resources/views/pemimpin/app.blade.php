@@ -80,6 +80,10 @@
     </div>
 </div>
 
+    <!-- Alert -->
+    @include('sweetalert::alert')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('template/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('template/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
