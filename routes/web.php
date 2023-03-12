@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\EditJabatanController;
 use App\Http\Controllers\Admin\EditJabatanPemimpinController;
 use App\Http\Controllers\Pemimpin\Book\AuthorController;
+use App\Http\Controllers\Pemimpin\Book\BookController;
 use App\Http\Controllers\Pemimpin\Book\KategoriController;
 use App\Http\Controllers\Pemimpin\Book\PenerbitController;
 use App\Http\Controllers\Pemimpin\EditPemimpinController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Pemimpin\PemimpinController;
 use App\Http\Controllers\User\EditUserController;
 use App\Http\Controllers\User\IzinController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +39,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/pengarang', AuthorController::class);
 Route::resource('/penerbit', PenerbitController::class);
 Route::resource('/kategori', KategoriController::class);
+Route::resource('/book', BookController::class);
     
      //Middleware Admin
      Route::middleware(['admin'])->group(function () {

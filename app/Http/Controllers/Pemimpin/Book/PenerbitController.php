@@ -97,10 +97,14 @@ class PenerbitController extends Controller
      */
     public function destroy($id)
     {
-        $publisher = Publiser::findOrFail($id);
-        $publisher->delete();
-        $publisher->book()->delete();
-        Peminjaman::truncate();
+        $publiser = Publiser::findOrFail($id);
+        if ($publiser::doesntHave('book')) {
+            $publiser->delete();
+        } else {
+            $publiser->delete();
+            $publiser->book()->delete();
+            Peminjaman::truncate(); 
+        }
         Alert::success('Informasi Pesan!', 'Penerbit Berhasil dihapus!');
         return back();
     }
