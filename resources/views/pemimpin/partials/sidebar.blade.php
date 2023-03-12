@@ -38,7 +38,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('kategori.index') }}">Kategori Buku</a>
-                <a class="collapse-item" href="#">Buku</a>
+                <a class="collapse-item" href="{{ route('book.index') }}">Buku</a>
                 <a class="collapse-item" href="{{ route ('pengarang.index') }}">Pengarang</a>
                 <a class="collapse-item" href="{{ route ('penerbit.index') }}">Penerbit</a>
             </div>

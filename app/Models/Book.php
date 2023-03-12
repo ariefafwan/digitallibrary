@@ -10,7 +10,7 @@ class Book extends Model
     use HasFactory;
     
     protected $guarded = [];
-    protected $with = ['kategori', 'author', 'publiser'];
+    protected $with = ['kategori', 'author', 'penerbit'];
 
     public function kategori()
     {
@@ -22,9 +22,9 @@ class Book extends Model
         return $this->belongsTo(Author::class);
     }
 
-    public function publiser()
+    public function penerbit()
     {
-        return $this->belongsTo(Publisher::class);
+        return $this->belongsTo(Publiser::class);
     }
 
     public function peminjaman()

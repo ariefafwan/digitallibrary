@@ -15,7 +15,7 @@ class CreateBooksTable extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->string('book_code')->unique();
+            $table->string('kodebuku')->unique();
             $table->string('name');
             $table->longText('description');
             $table->string('img');
@@ -25,7 +25,7 @@ class CreateBooksTable extends Migration
             $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('penerbit_id')->unsigned();
             $table->foreign('penerbit_id')->references('id')->on('publisers')->onDelete('cascade')->onUpdate('cascade');
-            $table->year('publication_year');
+            $table->year('tahunterbit');
             $table->string('isbn', 50);
             $table->integer('stock');
             $table->timestamps();

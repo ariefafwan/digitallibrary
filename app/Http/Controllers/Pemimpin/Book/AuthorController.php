@@ -104,10 +104,14 @@ class AuthorController extends Controller
     public function destroy($id)
     {
         $author = Author::findOrFail($id);
-        $author->delete();
-        $author->book()->delete();
-        Peminjaman::truncate();
-        Alert::success('Informasi Pesan!', 'Pengarang Berhasil dihapus!');
+        if ($author::doesntHave('book')) {
+            $author->delete();
+        } else {
+            $author->delete();
+            $author->book()->delete();
+            Peminjaman::truncate(); 
+        }
+        Alert::success('Informasi Pesan!', 'Author Berhasil dihapus!');
         return back();
     }
 }
