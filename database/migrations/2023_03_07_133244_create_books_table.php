@@ -17,7 +17,7 @@ class CreateBooksTable extends Migration
             $table->id();
             $table->string('kodebuku')->unique();
             $table->string('name');
-            $table->longText('description');
+            $table->longText('deskripsi');
             $table->string('img');
             $table->bigInteger('kategori_id')->unsigned();
             $table->foreign('kategori_id')->references('id')->on('kategoris')->onDelete('cascade')->onUpdate('cascade');

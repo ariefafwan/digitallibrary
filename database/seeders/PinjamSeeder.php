@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class PeminjamanSeeder extends Seeder
+class PinjamSeeder extends Seeder
 {
     /**
      * Run the database seeds.

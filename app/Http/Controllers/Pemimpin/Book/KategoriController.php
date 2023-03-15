@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pemimpin\Book;
 
 use App\Models\Kategori;
 use App\Models\Peminjaman;
+use App\Models\Pinjam;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -109,7 +110,7 @@ class KategoriController extends Controller
         } else {
             $category->delete();
             $category->book()->delete();
-            Peminjaman::truncate(); 
+            Pinjam::truncate(); 
         }
         Alert::success('Informasi Pesan!', 'Kategori Berhasil dihapus!');
         return back();

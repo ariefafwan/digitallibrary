@@ -23,8 +23,8 @@
                         <div class="form-group">
                             <label for="prodi">Kategori Buku</label>
                             <select class="form-select" id="floatingSelect" name="kategori_id" id="kategori_id" aria-label="Floating label select example" required>
-                                @foreach ($kategori as $kategori)
                                 <option selected>--Piih Kategori--</option>
+                                @foreach ($kategori as $kategori)
                                 <option value="{{ $kategori->id }}">{{ $kategori->name }}</option>
                                 @endforeach
                             </select>
@@ -36,8 +36,8 @@
                         <div class="form-group">
                             <label for="prodi">Penulis</label>
                             <select class="form-select" id="floatingSelect" name="author_id" id="author_id" aria-label="Floating label select example" required>
+                                <option selected>--Piih Penulis--</option>
                                 @foreach ($author as $author)
-                                <option selected>--Piih Penerbit--</option>
                                 <option value="{{ $author->id }}">{{ $author->name }}</option>
                                 @endforeach
                             </select>
@@ -45,15 +45,15 @@
                         <div class="form-group">
                             <label for="prodi">Penerbit</label>
                             <select class="form-select" id="floatingSelect" name="penerbit_id" id="penerbit_id" aria-label="Floating label select example" required>
-                                @foreach ($penerbit as $penerbit)
                                 <option selected>--Piih Penerbit--</option>
+                                @foreach ($penerbit as $penerbit)
                                 <option value="{{ $penerbit->id }}">{{ $penerbit->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="prodi">Deskripsi Buku</label>
-                            <textarea name="description" id="description" cols="20" rows="2" class="form-control" required></textarea>
+                            <textarea name="deskripsi" id="deskripsi" cols="20" rows="2" class="form-control" required></textarea>
                         </div>
                         <div class="form-group">
                             <label for="prodi">Tahun Terbit</label>

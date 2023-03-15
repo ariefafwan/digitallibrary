@@ -10,6 +10,7 @@ use App\Http\Controllers\Pemimpin\Book\PenerbitController;
 use App\Http\Controllers\Pemimpin\EditPemimpinController;
 use App\Http\Controllers\Pemimpin\IzinPemimpinController;
 use App\Http\Controllers\Pemimpin\PemimpinController;
+use App\Http\Controllers\Pemimpin\PinjamController;
 use App\Http\Controllers\User\EditUserController;
 use App\Http\Controllers\User\IzinController;
 use App\Http\Controllers\User\UserController;
@@ -35,11 +36,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
+
+//umum
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/pengarang', AuthorController::class);
 Route::resource('/penerbit', PenerbitController::class);
 Route::resource('/kategori', KategoriController::class);
 Route::resource('/book', BookController::class);
+Route::resource('/pinjam', PinjamController::class);
     
      //Middleware Admin
      Route::middleware(['admin'])->group(function () {

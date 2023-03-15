@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pemimpin\Book;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Kategori;
+use Illuminate\Support\Facades\File;
 use App\Models\Publiser;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -59,7 +60,7 @@ class BookController extends Controller
         $dtUpload->kodebuku = $genCode;
         $dtUpload->kategori_id = $request->kategori_id;
         $dtUpload->author_id = $request->author_id;
-        $dtUpload->description = $request->description;
+        $dtUpload->deskripsi = $request->deskripsi;
         $dtUpload->penerbit_id = $request->penerbit_id;
         $dtUpload->stock = $request->stock;
         $dtUpload->tahunterbit = $request->tahunterbit;
@@ -67,7 +68,7 @@ class BookController extends Controller
         $dtUpload->isbn = $request->isbn;
         $dtUpload->img = $namaFile;
         
-        $nm->move(public_path() . '/img/buku', $namaFile);
+        $nm->move(public_path() . '/storage/img', $namaFile);
         $dtUpload->save();
 
         Alert::success('Informasi Pesan!', 'Buku Baru Berhasil ditambahkan');
@@ -93,7 +94,13 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+        $page = "Edit Buku";
+        $kategori = Kategori::all();
+        $author = Author::all();
+        $penerbit = Publiser::all();
+        $book = Book::findOrFail($id);
+        return view('pemimpin.book.buku.edit', compact('user', 'book', 'page', 'kategori', 'author', 'penerbit'));
     }
 
     /**
@@ -105,7 +112,27 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $nm = $request->img;
+        $namaFile = $nm->getClientOriginalName();
+        
+        $dtUpload = Book::findOrFail($id);
+        $dtUpload->name = $request->name;
+        $dtUpload->kodebuku = $request->kodebuku;
+        $dtUpload->kategori_id = $request->kategori_id;
+        $dtUpload->author_id = $request->author_id;
+        $dtUpload->deskripsi = $request->deskripsi;
+        $dtUpload->penerbit_id = $request->penerbit_id;
+        $dtUpload->stock = $request->stock;
+        $dtUpload->tahunterbit = $request->tahunterbit;
+        $dtUpload->author_id = $request->author_id;
+        $dtUpload->isbn = $request->isbn;
+        $dtUpload->img = $namaFile;
+        
+        $nm->move(public_path() . '/storage/img', $namaFile);
+        $dtUpload->save();
+
+        Alert::success('Informasi Pesan!', 'Buku Berhasil diedit');
+        return redirect()->route('book.index');
     }
 
     /**
@@ -116,6 +143,12 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Book::findOrFail($id);
+        $img = public_path('storage/img' . $data->img);
+        $data->delete();
+        File::delete($img);
+        $data->pinjam()->delete();
+        Alert::success('Informasi Pesan!', 'Buku Berhasil dihapus!');
+        return back();
     }
 }
