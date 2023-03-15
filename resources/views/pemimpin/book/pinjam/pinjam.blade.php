@@ -27,7 +27,7 @@
                             @foreach($pinjam as $row)
                             <tr>
                                 <th class="text-center">{{ $loop->iteration }}</th>
-                                <td class="text-center">{{ $row->name }}</td>
+                                <td class="text-center">{{ $row->member->name }}</td>
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <a href="{{ route('pinjam.edit',$row->id) }}" class="btn btn-warning btn-flat mr-2"><i class="fa fa-eye" aria-hidden="true"></i></a>
