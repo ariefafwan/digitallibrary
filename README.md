@@ -2,8 +2,8 @@
 
 #Laravel 8
 
-[![](https://img.shields.io/github/issues/ariefafwan/simpeg?style=flat-square)](https://img.shields.io/github/issues/ariefafwan/simpeg?style=flat-square) ![](https://img.shields.io/github/stars/ariefafwan/simpeg?style=flat-square)
-![](https://img.shields.io/github/forks/ariefafwan/simpeg?style=flat-square) 
+[![](https://img.shields.io/github/issues/ariefafwan/digitallibrary?style=flat-square)](https://img.shields.io/github/issues/ariefafwan/digitallibrary?style=flat-square) ![](https://img.shields.io/github/stars/ariefafwan/digitallibrary?style=flat-square)
+![](https://img.shields.io/github/forks/ariefafwan/digitallibrary?style=flat-square) 
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a> [![saythanks](https://img.shields.io/badge/say-thanks-ff69b4.svg?style=flat-square)](https://saythanks.io/to/rizalihwan94%40gmail.com)  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=flat-square)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) [![made-for-VSCode](https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg?style=flat-square)](https://code.visualstudio.com/)
 
 ### About
@@ -31,7 +31,7 @@ Website Perpustakaan Open Source yang dibuat oleh <a href="https://github.com/ar
 
 1. **Clone Repository**
 ```bash
-git clone https://github.com/ariefafwan/simpeg.git
+git clone https://github.com/ariefafwan/digitallibrary.git
 composer install
 npm install
 copy .env.example .env
