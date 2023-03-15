@@ -21,7 +21,7 @@ class PinjamController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $page = "Daftar Peminjaman";
+        $page = "Peminjaman";
         $pinjam = Pinjam::latest()->paginate(10);
         return view('pemimpin.book.pinjam.pinjam', compact('user', 'pinjam', 'page'));
     }
@@ -38,7 +38,7 @@ class PinjamController extends Controller
         $pinjam = Pinjam::latest()->paginate(10);
         $member = Member::all();
         $book = Book::all();
-        return view('pemimpin.book.pinjam.pinjam', compact('user', 'pinjam', 'page'));
+        return view('pemimpin.book.pinjam.pinjam', compact('user', 'pinjam', 'page', 'book', 'member'));
     }
 
     /**

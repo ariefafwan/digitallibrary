@@ -46,7 +46,7 @@
     </li>
 
     <li class="nav-item  {{ ($page == "Peminjaman") ? 'active' : '' }}">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ route('pinjam.index') }}">
             <i class="fa fa-briefcase" aria-hidden="true"></i>
             <span>Peminjaman</span>
         </a>
