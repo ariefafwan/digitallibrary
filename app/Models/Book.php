@@ -27,9 +27,9 @@ class Book extends Model
         return $this->belongsTo(Publiser::class);
     }
 
-    public function peminjaman()
+    public function pinjam()
     {
-        return $this->hasMany(Peminjaman::class);
+        return $this->hasMany(Pinjam::class);
     }
     
     public function getBookStokAttribute()
@@ -37,8 +37,8 @@ class Book extends Model
         return $this->stock >= 1 ? 'tersedia' : 'kosong';
     }
 
-    public function getBookImgAttribute()
+    public function getImagesAttribute()
     {
-        return "/storage/" . $this->thumbnail;
+        return "/storage/img" . $this->img;
     }
 }

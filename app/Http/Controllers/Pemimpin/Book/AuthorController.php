@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pemimpin\Book;
 
 use App\Models\Author;
 use App\Models\Peminjaman;
+use App\Models\Pinjam;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -109,7 +110,7 @@ class AuthorController extends Controller
         } else {
             $author->delete();
             $author->book()->delete();
-            Peminjaman::truncate(); 
+            Pinjam::truncate(); 
         }
         Alert::success('Informasi Pesan!', 'Author Berhasil dihapus!');
         return back();

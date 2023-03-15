@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pemimpin\Book;
 
 use App\Models\Peminjaman;
+use App\Models\Pinjam;
 use App\Models\Publiser;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -103,7 +104,7 @@ class PenerbitController extends Controller
         } else {
             $publiser->delete();
             $publiser->book()->delete();
-            Peminjaman::truncate(); 
+            Pinjam::truncate(); 
         }
         Alert::success('Informasi Pesan!', 'Penerbit Berhasil dihapus!');
         return back();

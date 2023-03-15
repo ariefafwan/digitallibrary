@@ -12,9 +12,9 @@ class Member extends Model
     protected $guarded = [];
     protected $with = ['user'];
 
-    public function peminjaman()
+    public function pinjam()
     {
-        return $this->hasOne(Peminjaman::class);
+        return $this->hasOne(Pinjam::class);
     }
 
     public function user()
