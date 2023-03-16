@@ -21,9 +21,9 @@ Website Perpustakaan Open Source yang dibuat oleh <a href="https://github.com/ar
 - Username: admin
 - Password: password
 
-**User Default Akun**
+<!-- **User Default Akun**
 - Username: siswa
-- Password: password
+- Password: password -->
 
 ------------
 
