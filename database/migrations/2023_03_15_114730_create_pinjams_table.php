@@ -20,6 +20,7 @@ class CreatePinjamsTable extends Migration
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('book_id')->unsigned();
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('status');
             $table->date('tglpinjam');
             $table->date('tglkembali');
             $table->timestamps();

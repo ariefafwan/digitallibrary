@@ -51,26 +51,22 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                @if ($member->isEmpty())
+                @if ($pegawai->isEmpty())
                 <img class="img-profile rounded-circle mr-2" src="/img/profil/profil_img.jpg">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                 @else
-                @foreach ($member as $member)
-                <img class="img-profile rounded-circle mr-2" src="/storage/profil/{{ $member->profile_img }}">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ $member->name }}</span>
+                @foreach ($pegawai as $pegawai)
+                <img class="img-profile rounded-circle mr-2" src="/storage/profil/{{ $pegawai->profile_img }}">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ $pegawai->name }}</span>
                 @endforeach
                 @endif
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="{{ route('member.index') }}">
+                <a class="dropdown-item" href="{{ route ('editpegawai.index')}}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                 </a>
-                {{-- <a class="dropdown-item" href="#">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Change Password
-                </a> --}}
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
