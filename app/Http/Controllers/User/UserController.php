@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Izin;
+use App\Models\Member;
+use App\Models\Pinjam;
 use App\Models\User;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -18,36 +20,29 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $page = "Dasboard User";
+        $member = Member::where('user_id', Auth::user()->id)->get();
+        if ($member->isEmpty()) {
+            return view('user.member.tambah', compact('user', 'page', 'member'));
+        }
+        // $dt1 = DB::table('users')->get()->where('role_id', '2')->count();
         $dt1 = DB::table('izins')->get()->where('user_id',Auth::user()->id)-> where('status', 'Dikirim')->count();
         $dt2 = DB::table('izins')->get()->where('user_id',Auth::user()->id)-> where('status', 'Diterima')->count();
         $dt3 = DB::table('izins')->get()->where('user_id',Auth::user()->id)-> where('status', 'Ditolak')->count();
-        $page = "Dasboard User";
-        return view('user.dashboard', compact('user', 'dt1', 'dt2', 'dt3', 'page'));
+        return view('user.dashboard', compact('user', 'dt1', 'dt2', 'dt3', 'page', 'member'));
     }
 
-    public function izinditerima()
+    public function record()
     {
         $user = Auth::user();
-        $page = "Permohonan Izin Diterima";
-        $izin = Izin::all()->where('user_id',Auth::user()->id)-> where('status', 'Diterima');
-        $nippos = Auth::user()->nippos;
-        if ($nippos == true) {
-            return view('user.izincuti.diterima', compact('user', 'izin', 'page', 'nippos'));
+        $page = "Record Peminjaman";
+        $member = Member::where('user_id', Auth::user()->id)->get();
+        if ($member->isEmpty()) {
+            return view('user.member.tambah', compact('user', 'page', 'member'));
         }
-        return view('user.izincuti.belum', compact('user', 'izin', 'page', 'nippos'));
-        
-    }
-
-    public function izinditolak()
-    {
-        $user = Auth::user();
-        $page = "Permohonan Izin Ditolak";
-        $izin = Izin::all()-> where('status', 'Ditolak');
-        $nippos = Auth::user()->nippos;
-        if ($nippos == true) {
-            return view('user.izincuti.ditolak', compact('user', 'izin', 'page', 'nippos'));
+        foreach ($member as $user) {
+            $pinjam = Pinjam::all()->where('member_id', $user->id);
         }
-        return view('user.izincuti.belum', compact('user', 'izin', 'page', 'nippos'));
-        
+        return view('user.member.record', compact('user', 'page', 'member', 'pinjam'));
     }
 }

@@ -16,7 +16,12 @@ class CreateMembersTable extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('gender');
+            $table->string('nmrhp');
+            $table->string('alamat');
+            $table->string('profile_img')->default('profil_img.jpg')->nullable();
             $table->date('date_of_birth');
             $table->timestamps();
         });

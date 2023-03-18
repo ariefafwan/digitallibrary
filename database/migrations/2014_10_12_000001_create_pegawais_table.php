@@ -18,14 +18,11 @@ class CreatePegawaisTable extends Migration
             $table->string('name');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('profile_img')->default('profil_img.jpg');
-            $table->string('nip')->nullable();
-            $table->string('nmrhp')->nullable();
-            $table->string('alamat')->nullable();
-            $table->string('status_kawin')->nullable();
-            $table->string('jenis_kelamin')->nullable();
-            $table->date('mulai_bekerja')->nullable();
-            $table->string('gaji')->nullable();
+            $table->string('gender');
+            $table->string('nmrhp');
+            $table->string('alamat');
+            $table->string('profile_img')->default('profil_img.jpg')->nullable();
+            $table->date('date_of_birth');
             $table->timestamps();
         });
     }

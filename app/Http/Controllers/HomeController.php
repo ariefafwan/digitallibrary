@@ -30,7 +30,7 @@ class HomeController extends Controller
         if ($role == "1") {
             return redirect()->route('admin');
         } else if ($role == "2") {
-            return redirect()->route('pemimpin');
+            return redirect()->route('pegawai');
         } else if ($role == "3") {
             return redirect()->route('user');
         }
