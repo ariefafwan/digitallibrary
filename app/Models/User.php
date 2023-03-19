@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use League\CommonMark\Node\Query\AndExpr;
 
 class User extends Authenticatable
 {
@@ -63,6 +64,12 @@ class User extends Authenticatable
     public function member()
     {
         return $this->hasMany(Member::class);
+    }
+
+    public function doesnt()
+    {
+        return $this->hasMany(Member::class);
+        return $this->hasMany(Pegawai::class);
     }
 
     public function pinjam()

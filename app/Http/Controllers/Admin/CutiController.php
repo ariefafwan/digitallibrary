@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Models\Divisi;
-use App\Models\Role;
-use App\Models\User;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Auth;
-
+use App\Models\Izin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
-class EditJabatanPemimpinController extends Controller
+class CutiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,11 +17,9 @@ class EditJabatanPemimpinController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $divisi = Divisi::all();
-        $page = "Daftar Pemimpin";
-        $jabatan = Role::all();
-        $pegawai = User::all()-> where('role_id', '2');
-        return view('admin.editjabatan.daftarpemimpin', compact('user', 'pegawai', 'page', 'jabatan', 'divisi'));
+        $page = "Permohonan Izin Cuti Masuk";
+        $izin = Izin::where('status', 'Ditolak');
+        return view('admin.pegawai.permohonan', compact('user', 'izin', 'page'));
     }
 
     /**
@@ -56,9 +51,7 @@ class EditJabatanPemimpinController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        $page = 'Detail Users';
-        return view('admin.editjabatan.show', compact('user', 'page'));
+        //
     }
 
     /**
@@ -81,12 +74,16 @@ class EditJabatanPemimpinController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $dtUpload = User::find($id);
-        $dtUpload->role_id = $request->role_id;
+
+        $dtUpload = Izin::findOrFail($id);
+        $dtUpload->status = $request->status;
+        $dtUpload->balasan = $request->balasan;
 
         $dtUpload->save();
 
-        return redirect()->route('daftarpemimpin.index')->with(['message' => 'successfully!']);
+
+        Alert::success('Informasi Pesan!', 'Permohonan Cuti Baru Berhasil Diedit');
+        return redirect()->route('cuti.index');
     }
 
     /**
@@ -97,11 +94,15 @@ class EditJabatanPemimpinController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $izin = Izin::findOrFail($id);
 
-        $user->delete();
+        if(file_exists(public_path('/storage/lampiran/') . $izin->lampiran)){
+            unlink(public_path('/storage/lampiran/') . $izin->lampiran);
+        }
 
-        return redirect()->route('daftarpemimpin.index')
-            ->with('updatesuccess', 'Berhasil Dihapus');
+        $izin->delete();
+
+        Alert::success('Informasi Pesan!', 'Permohonan Cuti Baru Berhasil Dihapus');
+        return redirect()->route('cuti.index');
     }
 }

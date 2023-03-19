@@ -11,7 +11,9 @@
 
                 <input type="hidden" class="form-control" id="exampleFormControlInput1" name="nmrizin" readonly>
 
-                <input type="hidden" class="form-control" id="exampleFormControlInput1" value="{{ Auth::user()->id }}" name="user_id" readonly>
+                @foreach ($pegawai as $p)
+                <input type="hidden" class="form-control" id="exampleFormControlInput1" value="{{ $p->id }}" name="pegawai_id" readonly>                    
+                @endforeach
 
                 <input type="hidden" class="form-control" name="status" value="Dikirim" readonly>
         
