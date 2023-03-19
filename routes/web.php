@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\EditJabatanController;
+use App\Http\Controllers\CutiController;
 use App\Http\Controllers\Pegawai\Book\AuthorController;
 use App\Http\Controllers\Pegawai\Book\BookController;
 use App\Http\Controllers\Pegawai\Book\KategoriController;
@@ -38,18 +38,23 @@ Route::middleware(['auth'])->group(function () {
 //umum
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/pengarang', AuthorController::class);
-Route::resource('/penerbit', PenerbitController::class);
-Route::resource('/kategori', KategoriController::class);
-Route::resource('/book', BookController::class);
-Route::resource('/pinjam', PinjamController::class);
-Route::get('/denda', [PegawaiController::class, 'denda'])->name('denda');
-Route::get('/selesai', [PegawaiController::class, 'selesai'])->name('selesai');
     
      //Middleware Admin
      Route::middleware(['admin'])->group(function () {
         Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin');
-        Route::resource('admin/daftarpegawai', EditJabatanController::class);
+        Route::get('admin/daftarmember', [AdminController::class, 'daftarmember'])->name('daftarmember');
+        Route::get('admin/daftarmember/{id}/detail', [AdminController::class, 'detailmember'])->name('detailmember');
+        Route::get('admin/daftarpegawai', [AdminController::class, 'daftarpegawai'])->name('daftarpegawai');
+        Route::get('admin/daftarpegawai/{id}/detail', [AdminController::class, 'detailpegawai'])->name('detailpegawai');
+        Route::get('admin/peminjaman', [AdminController::class, 'peminjaman'])->name('peminjaman');
+        Route::get('admin/dendapinjam', [AdminController::class, 'dendapinjam'])->name('dendapinjam');
+        Route::get('admin/laporanpinjam', [AdminController::class, 'laporanpinjam'])->name('laporanpinjam');
+        Route::get('admin/editroles', [AdminController::class, 'editroles'])->name('roles');
+        Route::post('admin/editroles/{id}/update', [AdminController::class, 'updaterole'])->name('updateroles');
+        Route::post('admin/editroles/{id}/destroy', [AdminController::class, 'destroyrole'])->name('destroyroles');
+        Route::resource('admin/cuti', CutiController::class);
+        Route::get('admin/cutiditerima', [CutiController::class, 'cutiditerima'])->name('cutiditerima');
+        Route::get('admin/cutiditolak', [CutiController::class, 'cutiditolak'])->name('cutiditolak');
     });
     
     //Middleware Pegawai
@@ -59,6 +64,13 @@ Route::get('/selesai', [PegawaiController::class, 'selesai'])->name('selesai');
         Route::get('pegawai/izinterima', [PegawaiController::class, 'izinditerima'])->name('izinditerima');
         Route::resource('pegawai/izin', IzinPegawaiController::class);
         Route::get('pegawai/izinditolak', [PegawaiController::class, 'izinditolak'])->name('izinditolak');
+        Route::resource('pegawai/pengarang', AuthorController::class);
+        Route::resource('pegawai/penerbit', PenerbitController::class);
+        Route::resource('pegawai/kategori', KategoriController::class);
+        Route::resource('pegawai/book', BookController::class);
+        Route::resource('pegawai/pinjam', PinjamController::class);
+        Route::get('pegawai/denda', [PegawaiController::class, 'denda'])->name('denda');
+        Route::get('pegawai/selesai', [PegawaiController::class, 'selesai'])->name('selesai');
     });
 
     //Middleware User

@@ -33,7 +33,10 @@ class PegawaiController extends Controller
         $user = Auth::user();
         $page = "Permohonan Izin Diterima";
         $pegawai = Pegawai::where('user_id', Auth::user()->id)->get();
-        $izin = Izin::all()->where('user_id', Auth::user()->id)->where('status', 'Diterima');
+        foreach ($pegawai as $p)
+        {
+            $izin = Izin::all()->where('pegawai_id', $p->id)->where('status', 'Diterima');
+        }
         return view('pegawai.izincuti.diterima', compact('user', 'izin', 'page', 'pegawai'));
     }
 
@@ -42,7 +45,10 @@ class PegawaiController extends Controller
         $user = Auth::user();
         $page = "Permohonan Izin Ditolak";
         $pegawai = Pegawai::where('user_id', Auth::user()->id)->get();
-        $izin = Izin::all()->where('user_id', Auth::user()->id)->where('status', 'Ditolak');
+        foreach ($pegawai as $p)
+        {
+            $izin = Izin::all()->where('pegawai_id', $p->id)->where('status', 'Ditolak');
+        }
         return view('pegawai.izincuti.ditolak', compact('user', 'izin', 'page', 'pegawai'));
     }
 

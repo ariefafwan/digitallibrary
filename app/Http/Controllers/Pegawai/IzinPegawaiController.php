@@ -19,8 +19,11 @@ class IzinPegawaiController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $izin = Izin::all()->where('user_id',Auth::user()->id)-> where('status', 'Dikirim');
         $pegawai = Pegawai::where('user_id', Auth::user()->id)->get();
+        foreach ($pegawai as $p)
+        {
+            $izin = Izin::all()->where('pegawai_id', $p->id)->where('status', 'Dikirim');
+        }
         $page = "Permohonan Izin Dikirim";
         return view('pegawai.izincuti.izin', compact('user', 'izin', 'page', 'pegawai'));
     }
@@ -52,7 +55,7 @@ class IzinPegawaiController extends Controller
 
         $dtUpload = new Izin();
         $dtUpload->nmrizin = $idgen;
-        $dtUpload->user_id = $request->user_id;
+        $dtUpload->pegawai_id = $request->pegawai_id;
         $dtUpload->status = $request->status;
         $dtUpload->jenis = $request->jenis;
         $dtUpload->tglawal = $request->tglawal;
