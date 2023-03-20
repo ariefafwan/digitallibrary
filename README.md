@@ -18,12 +18,16 @@ Website Perpustakaan Open Source yang dibuat oleh <a href="https://github.com/ar
  ### Default Akun untuk login
 	
 **Admin Default Akun**
-- Username: admin
-- Password: password
+- email: admin@gmail.com
+- password: password
 
-<!-- **User Default Akun**
-- Username: siswa
-- Password: password -->
+**Pegawai Default Akun**
+- email: pegawai@gmail.com
+- password: password
+
+**User Default Akun**
+- email: user@gmail.com
+- password: password
 
 ------------
 
@@ -40,8 +44,8 @@ copy .env.example .env
 3. **Instalasi**
 ```git bash
 php artisan key:generate
-php artisan migrate
-php artisan db:seed
+php artisan storage:link
+php artisan seed:fresh
 ```
 
 4. **Serve**
