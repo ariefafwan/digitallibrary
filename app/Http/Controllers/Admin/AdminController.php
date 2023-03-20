@@ -62,7 +62,7 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $page = "Peminjaman";
-        $peminjaman = Pinjam::where('status', 'Berjalan')->paginate(10);
+        $peminjaman = Pinjam::latest()->where('status', 'Berjalan')->paginate(10);
         return view('admin.peminjaman.index', compact('user', 'peminjaman', 'page'));
     }
 
@@ -70,7 +70,7 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $page = "Peminjaman Didenda";
-        $peminjaman = Pinjam::paginate(10)->where('tglkembali', '<', Carbon::now())->where('status', 'Berjalan');
+        $peminjaman = Pinjam::latest()->where('tglkembali', '<', Carbon::now())->where('status', 'Berjalan')->paginate(10);
         return view('admin.peminjaman.denda', compact('user', 'peminjaman', 'page'));
     }
 
@@ -78,7 +78,7 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $page = "Laporan Peminjaman";
-        $peminjaman = Pinjam::where('status', 'Selesai')->paginate(10);
+        $peminjaman = Pinjam::latest()->where('status', 'Selesai')->paginate(10);
         return view('admin.peminjaman.laporan', compact('user', 'peminjaman', 'page'));
     }
 
@@ -114,7 +114,7 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $page = "Permohonan Izin Cuti Diterima";
-        $izin = Izin::where('status', 'Diterima');
+        $izin = Izin::latest()->where('status', 'Diterima')->paginate(10);
         return view('admin.pegawai.cutiditerima', compact('user', 'izin', 'page'));
     }
 
@@ -122,7 +122,7 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $page = "Permohonan Izin Cuti Ditolak";
-        $izin = Izin::where('status', 'Ditolak');
+        $izin = Izin::latest()->where('status', 'Ditolak')->paginate(10);
         return view('admin.pegawai.cutiditolak', compact('user', 'izin', 'page'));
     }
 }

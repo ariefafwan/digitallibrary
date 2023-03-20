@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en" class="h-100">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
-    <title>Sistem Informasi Kepegawaian Kantor Pos</title>
+    <title>Digital Library</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/cover/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/album/">
 
     <link href="{{ asset ('css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
@@ -79,78 +79,63 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     
-    <!-- Custom styles for this template -->
-    <link href="{{ asset ('css/cover.css') }}" rel="stylesheet">
   </head>
-  <body class="d-flex h-100 text-center text-bg-dark">
+  <body>
     
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="mb-auto">
-    <div>
-      <img class="float-md-start" style="width: 10%" src="img/logo.png">
-      <h3 class="float-md-start mb-0">SIMPEG Kantor Pos</h3>
-      <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
-        <a class="nav-link fw-bold py-1 px-0" href="{{ route('login') }}">Login</a>
-        <a class="nav-link fw-bold py-1 px-0" href="{{ route('register') }}">Register</a>
-      </nav>
+<header>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <strong>Digital Library</strong>
+      </a>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main class="px-1">
-    <h1>Tentang Kami</h1>
-    <p class="lead mb-3">Ini Adalah Sistem Informasi Kepegawaian Kantor Pos</p>
+<main>
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Digital Library</h1>
+        <h3 class="lead text-muted">Let's Join Us, And Explore Your Reading</h3>
+        <p>
+          <a href="{{ route('login') }}" class="btn btn-primary my-2">Login</a> or
+          <a href="{{ route('register') }}" class="btn btn-secondary my-2">Register</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="text-center">
+  <div class="copyright">
+    &copy; Copyright <strong><span>2023</span></strong>. All Rights Reserved
+  </div>
+  <div class="credits">
+    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+  </div>    
+  <div class="social-media">
+    <p>
+        <a href="#">
+          <i class="fab fa-facebook-square"></i> 
+        </a>
+        <a href="#">
+          <i class="fab fa-instagram"></i> 
+        </a>
+        <a href="#">
+          <i class="fab fa-twitter-square"></i> 
+        </a>
+        <a href="#">
+          <i class="fab fa-tiktok"></i> 
+        </a>
+        <a href="#">
+          <i class="fab fa-youtube"></i> 
+        </a>
     </p>
-
-    <div class="row">
-      <div class="mt-3 justify-content-center float-md-start">
-        <img class="bd-placeholder-img rounded-circle mb-4" src="img/pos-aja.png" alt="PosAja!" width="20%" style="height: 100%; border-radius: 5px;">
-        <div class="row justify-content-center float-md-end mt-2">
-          <a href="https://play.google.com/store/apps/details?id=com.posindonesia.cob&amp;hl=en&amp;gl=US" target="_blank" rel="nofollow"><img src="img/play.png" style="width: 100px"></a>
-          <a href="https://apps.apple.com/id/app/qposin-aja/id1545882949" target="_blank" rel="nofollow"><img src="img/app.png" style="width: 100px"></a>
-        </div>
-      </div>
-      <div class="mt-3 justify-content-center">
-        <img class="bd-placeholder-img rounded-circle mb-4" src="img/pospay.png" alt="PosAja!" width="20%" style="height: 100%; border-radius: 5px;">
-        <div class="row justify-content-center float-md-end mt-2">
-          <a href="https://play.google.com/store/apps/details?id=com.posindonesia.giropos&amp;hl=en&amp;gl=US" target="_blank" rel="nofollow"><img src="img/play.png" style="width: 100px"></a>
-          <a href="https://apps.apple.com/id/app/pospay/id1542001621" target="_blank" rel="nofollow"><img src="img/app.png" style="width: 100px"></a>
-        </div>
-      </div>
-    </div>
-    <!-- /.row -->
-
-  </main>
-
-  <footer class="mt-auto text-white-50">
-    <div class="copyright">
-      &copy; Copyright <strong><span>2023</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>    
-    <div class="social-media">
-      <p>
-          <a href="https://www.facebook.com/posindonesia/">
-            <i class="fab fa-facebook-square"></i> 
-          </a>
-          <a href="https://www.instagram.com/posindonesia.ig/?hl=en">
-            <i class="fab fa-instagram"></i> 
-          </a>
-          <a href="https://twitter.com/posindonesia">
-            <i class="fab fa-twitter-square"></i> 
-          </a>
-          <a href="https://www.tiktok.com/@posindonesia_official?">
-            <i class="fab fa-tiktok"></i> 
-          </a>
-          <a href="https://www.youtube.com/c/PosIndonesiajuara">
-            <i class="fab fa-youtube"></i> 
-          </a>
-      </p>
-    </div>
-  </footer>
-  
-</div>
-
-</body>
+  </div>
+</footer>
+  </body>
 </html>

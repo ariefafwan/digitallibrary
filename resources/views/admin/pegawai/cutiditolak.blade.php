@@ -1,6 +1,6 @@
-@extends('pegawai.app')
+@extends('admin.app')
 
-@section('pegawaibody')
+@section('body')
 
 <!-- Begin Page Content -->
 <div class="container">

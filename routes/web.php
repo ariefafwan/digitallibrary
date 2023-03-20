@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\CutiController;
+use App\Http\Controllers\Admin\CutiController;
 use App\Http\Controllers\Pegawai\Book\AuthorController;
 use App\Http\Controllers\Pegawai\Book\BookController;
 use App\Http\Controllers\Pegawai\Book\KategoriController;
@@ -53,8 +53,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::post('admin/editroles/{id}/update', [AdminController::class, 'updaterole'])->name('updateroles');
         Route::post('admin/editroles/{id}/destroy', [AdminController::class, 'destroyrole'])->name('destroyroles');
         Route::resource('admin/cuti', CutiController::class);
-        Route::get('admin/cutiditerima', [CutiController::class, 'cutiditerima'])->name('cutiditerima');
-        Route::get('admin/cutiditolak', [CutiController::class, 'cutiditolak'])->name('cutiditolak');
+        Route::get('admin/cutiditerima', [AdminController::class, 'cutiditerima'])->name('cutiditerima');
+        Route::get('admin/cutiditolak', [AdminController::class, 'cutiditolak'])->name('cutiditolak');
     });
     
     //Middleware Pegawai
