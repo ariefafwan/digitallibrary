@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Izin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Routing\Controller;
 
 class CutiController extends Controller
 {
@@ -18,7 +19,7 @@ class CutiController extends Controller
     {
         $user = Auth::user();
         $page = "Permohonan Izin Cuti Masuk";
-        $izin = Izin::where('status', 'Ditolak');
+        $izin = Izin::latest()->where('status', 'Dikirim')->paginate(10);
         return view('admin.pegawai.permohonan', compact('user', 'izin', 'page'));
     }
 

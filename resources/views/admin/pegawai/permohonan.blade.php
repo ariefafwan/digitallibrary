@@ -48,27 +48,31 @@
                             <td>{{ $row->tglawal }}</td>
                             <td>{{ $row->tglakhir }}</td>
                             <td>{{ $row->deskripsi }}</td>
-                            <td>{{ $row->lampiran }}</td>
+                            <td>{{ $row->lampiran }}<a href="/storage/lampiran/{{ $row->lampiran }}" class="btn btn-primary"><i class="fas fa-arrow-down"></i></a>
+                            </td>
                             <td align="center">
                                 <div class="btn-group" >
                                     <form id="cuti-update-form-{{$row->id}}" action="{{ route('cuti.update',$row->id) }}" method="POST">
                                         @csrf
                                         @method('PUT')
+                                        <div class="col-md-15">
                                         <select class="form-select" name="status" id="status" aria-label="Floating label select example" required>
                                             <option selected aria-required="true">{{ $row->status }}</option>
                                             <option value="Diterima">Diterima</option>
                                             <option value="Ditolak">Ditolak</option>
                                         </select>
-                                        <div class="col-md-12">
-                                            <label class="labels">Balasan Anda</label>
-                                            <input type="date" name="balasan" id="balasan" class="form-control" placeholder="Balasan Anda" required>
                                         </div>
-                                    </form>
-                                    <a href="javascript:void(0)" class="btn btn-success ml-3"
+                                        <div class="col-md-15">
+                                            <label class="labels">Balasan Anda</label>
+                                            <input type="text" name="balasan" id="balasan" class="form-control" placeholder="Balasan Anda" required>
+                                        </div>
+                                        <br>
+                                        <a href="javascript:void(0)" class="btn btn-success"
                                         onclick="event.preventDefault();
                                             document.getElementById('cuti-update-form-{{$row->id}}').submit();">
                                         <i class="fa fa-check" aria-hidden="true"></i>
-                                    </a>
+                                        </a>
+                                    </form>
                                 </div>
                             </td>
                             <th align="center">

@@ -81,7 +81,11 @@ class PinjamController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = Auth::user();
+        $page = "Detail Peminjam";
+        $pegawai = Pegawai::where('user_id', Auth::user()->id)->get();
+        $pinjam = Pinjam::findOrFail($id);
+        return view('pegawai.book.pinjam.denda.show', compact('user', 'pinjam', 'page', 'pegawai'));
     }
 
     /**
@@ -92,7 +96,11 @@ class PinjamController extends Controller
      */
     public function edit($id)
     {
-        //
+        // $user = Auth::user();
+        // $page = "Peminjaman Berjalan";
+        // $pegawai = Pegawai::where('user_id', Auth::user()->id)->get();
+        // $pinjam = Pinjam::findOrFail($id);
+        // return view('pegawai.book.pinjam.denda.show', compact('user', 'pinjam', 'page', 'pegawai'));
     }
 
     /**
@@ -130,6 +138,10 @@ class PinjamController extends Controller
     {
         $dtUpload = Pinjam::findOrFail($id);
         $dtUpload->delete();
+        $book = Book::findOrFail($dtUpload->book_id);
+        Book::where('id', $dtUpload->book_id)->update([
+            'stock' => $book->stock + 1
+        ]);
         Alert::success('Informasi Pesan!', 'Peminjaman Buku berhasil di Hapus');
         return back();
     }

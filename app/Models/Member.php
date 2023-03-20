@@ -14,7 +14,7 @@ class Member extends Model
 
     public function pinjam()
     {
-        return $this->hasOne(Pinjam::class);
+        return $this->hasMany(Pinjam::class);
     }
 
     public function user()

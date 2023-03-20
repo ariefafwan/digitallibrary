@@ -49,7 +49,7 @@
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-group">
-                                        <a href="{{ route('pinjam.edit',$row->id) }}" class="btn btn-warning btn-flat mr-2"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        <a href="{{ route('pinjam.show',$row->id) }}" class="btn btn-warning btn-flat mr-2"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                         <a href="javascript:void(0)" class="btn btn-danger btn-flat"
                                             onclick="event.preventDefault();
                                                 document.getElementById('pinjam-delete-form-{{$row->id}}').submit();">

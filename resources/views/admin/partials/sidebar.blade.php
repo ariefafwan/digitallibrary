@@ -63,7 +63,7 @@
     <li class="nav-item  {{ ($page == "Peminjaman") ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('peminjaman') }}">
             <i class="fa fa-briefcase" aria-hidden="true"></i>
-            <span>Peminjaman</span>
+            <span>Peminjaman Berjalan</span>
         </a>
     </li>
 
